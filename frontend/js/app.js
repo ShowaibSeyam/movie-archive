@@ -3,7 +3,7 @@
    Core: config · state · API helper · toast · router · theme
    ============================================================ */
 
-const API = 'http://localhost:5000/api';
+const API = 'https://movie-archive-lfyc.onrender.com/api';
 
 /* ── Global State ─────────────────────────────────────────── */
 const S = {

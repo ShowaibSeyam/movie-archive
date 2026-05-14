@@ -1,16 +1,13 @@
 -- ============================================================
---  Movie Archive – Seed Data  (run after schema.sql)
+--  Movie Archive – Seed Data (Railway version)
 -- ============================================================
-USE movie_archive;
 
--- Genres
-INSERT INTO genre (genre_name) VALUES
+INSERT IGNORE INTO genre (genre_name) VALUES
   ('Action'),('Drama'),('Thriller'),('Sci-Fi'),
   ('Comedy'),('Horror'),('Romance'),('Animation'),
   ('Documentary'),('Fantasy');
 
--- Directors
-INSERT INTO director (director_name, nationality, bio) VALUES
+INSERT IGNORE INTO director (director_name, nationality, bio) VALUES
   ('Christopher Nolan','British-American','Master of mind-bending narratives and practical effects.'),
   ('Quentin Tarantino','American','Iconic for nonlinear storytelling and sharp dialogue.'),
   ('Steven Spielberg','American','Pioneer of modern blockbuster cinema.'),
@@ -20,8 +17,7 @@ INSERT INTO director (director_name, nationality, bio) VALUES
   ('James Cameron','Canadian','Director of two of the highest-grossing films ever.'),
   ('Ridley Scott','British','Spans sci-fi, historical epic, and thriller genres.');
 
--- Actors
-INSERT INTO actor (actor_name, birth_year, nationality) VALUES
+INSERT IGNORE INTO actor (actor_name, birth_year, nationality) VALUES
   ('Leonardo DiCaprio',1974,'American'),
   ('Tom Hardy',1977,'British'),
   ('Cillian Murphy',1976,'Irish'),
@@ -33,8 +29,7 @@ INSERT INTO actor (actor_name, birth_year, nationality) VALUES
   ('Brad Pitt',1963,'American'),
   ('Anthony Hopkins',1937,'Welsh-American');
 
--- Movies
-INSERT INTO movie (title,release_year,genre_id,director_id,rating,description,duration_min,language) VALUES
+INSERT IGNORE INTO movie (title,release_year,genre_id,director_id,rating,description,duration_min,language) VALUES
   ('Inception',2010,4,1,8.8,'A thief who steals corporate secrets through dream-sharing is given the task of planting an idea.',148,'English'),
   ('The Dark Knight',2008,1,1,9.0,'When the Joker unleashes chaos on Gotham, Batman faces his greatest psychological test.',152,'English'),
   ('Pulp Fiction',1994,2,2,8.9,'The lives of two mob hitmen, a boxer, and a gangster intertwine in four tales of violence.',154,'English'),
@@ -46,8 +41,7 @@ INSERT INTO movie (title,release_year,genre_id,director_id,rating,description,du
   ('Blade Runner 2049',2017,4,5,8.0,'A blade runner discovers a secret that leads him to track down former runner Rick Deckard.',164,'English'),
   ('Gladiator',2000,1,8,8.5,'A Roman general seeks vengeance against the corrupt emperor who murdered his family.',155,'English');
 
--- Movie Cast
-INSERT INTO movie_cast (movie_id,actor_id,role_name) VALUES
+INSERT IGNORE INTO movie_cast (movie_id,actor_id,role_name) VALUES
   (1,1,'Dom Cobb'),(1,2,'Eames'),
   (2,3,'Bruce Wayne'),(3,9,'Pumpkin'),
   (4,5,'Paul Atreides'),(4,6,'Chani'),
@@ -55,23 +49,19 @@ INSERT INTO movie_cast (movie_id,actor_id,role_name) VALUES
   (6,4,'Barbie'),(6,7,'Ken'),
   (7,1,'Cooper'),(9,7,'K'),(9,8,'Joi');
 
--- Admin user  (password: Admin@1234)
-INSERT INTO user (user_name,email,password,role) VALUES
+INSERT IGNORE INTO user (user_name,email,password,role) VALUES
   ('Admin','admin@moviearchive.com',
    '$2b$12$GsEsxbLAHBO0DVQBSo5kp.JnMOUClbxB7mW5lKfvqSEdQXMfHFDaS','admin');
 
--- Regular users  (password: Test@1234)
-INSERT INTO user (user_name,email,password,role) VALUES
+INSERT IGNORE INTO user (user_name,email,password,role) VALUES
   ('Alice','alice@example.com','$2b$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','user'),
   ('Bob','bob@example.com','$2b$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','user');
 
--- Sample reviews
-INSERT INTO review (user_id,movie_id,review_text,rating) VALUES
+INSERT IGNORE INTO review (user_id,movie_id,review_text,rating) VALUES
   (2,1,'Mind-blowing concept executed perfectly. Nolan at his peak.',9),
   (3,1,'Confusing at first, but absolutely worth it.',8),
-  (2,2,'Heath Ledger\'s performance alone makes this a 10/10.',10),
+  (2,2,'Heath Ledger''s performance alone makes this a 10/10.',10),
   (3,4,'Stunning visuals. The world-building is extraordinary.',8),
   (2,6,'Surprisingly deep beneath the pink exterior.',7);
 
--- Watchlist
-INSERT INTO watchlist (user_id,movie_id) VALUES (2,4),(2,7),(3,2),(3,5);
+INSERT IGNORE INTO watchlist (user_id,movie_id) VALUES (2,4),(2,7),(3,2),(3,5);
